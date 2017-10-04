@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +82,30 @@ public class NewsFeedFragment extends Fragment implements FeedInteractionListene
         feedView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         feedView.setItemAnimator(new DefaultItemAnimator());
         feedView.setAdapter(feedAdapter);
+        getFeedData();
+    }
+
+    //endregion
+
+    //region Public Methods
+
+
+    //endregion
+
+    //region Private Methods
+
+
+    //endregion
+
+    //region Server Interaction
+
+    private void getFeedData(){
+        Log.i(TAG, "Response received from server");
+        for(int i=0;  i<32; i++){
+            feedDataList.add(new FeedData(new JSONObject()));
+        }
+        Log.d(TAG, "total list size "+feedDataList.size());
+        feedAdapter.notifyDataSetChanged();
     }
 
     //endregion

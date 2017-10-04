@@ -66,13 +66,13 @@ public class FeedAdapter extends Adapter<ViewHolder>{
         }else if (holder instanceof FeedViewHolder){
             int adapterPosition = holder.getAdapterPosition() - 1;
             FeedViewHolder viewHolder = (FeedViewHolder) holder;
-            viewHolder.getCount().setText(String.valueOf(adapterPosition));
+            viewHolder.getCount().setText(String.valueOf(feedDataList.get(adapterPosition).getStoryId()));
         }
     }
 
     @Override
     public int getItemCount() {
-//        return feedDataList.size()+1;
-        return 32;
+        return feedDataList.size()+1;
+//        return 32;
     }
 }
