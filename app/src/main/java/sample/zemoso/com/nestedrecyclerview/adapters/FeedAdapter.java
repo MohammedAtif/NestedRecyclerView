@@ -72,6 +72,6 @@ public class FeedAdapter extends Adapter<ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return 0;
+        return feedDataList.size();
     }
 }
