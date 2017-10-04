@@ -48,7 +48,7 @@ public class FeedAdapter extends Adapter<ViewHolder>{
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == Constants.HolderType.Story){
             View view = LayoutInflater.from(mContext)
-                    .inflate(R.layout.story_layout, parent, false);
+                    .inflate(R.layout.story_list_layout, parent, false);
             return new StoryListHolder(view);
         }else if(viewType == Constants.HolderType.Feed){
             View view = LayoutInflater.from(mContext)
@@ -61,17 +61,18 @@ public class FeedAdapter extends Adapter<ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        int adapterPosition = holder.getAdapterPosition();
         if(holder instanceof StoryListHolder){
             feedInteractionListener.get().updateStoryList(((StoryListHolder) holder).getStoryRecyclerView());
         }else if (holder instanceof FeedViewHolder){
+            int adapterPosition = holder.getAdapterPosition() - 1;
             FeedViewHolder viewHolder = (FeedViewHolder) holder;
-
+            viewHolder.getCount().setText(String.valueOf(adapterPosition));
         }
     }
 
     @Override
     public int getItemCount() {
-        return feedDataList.size();
+//        return feedDataList.size()+1;
+        return 32;
     }
 }
